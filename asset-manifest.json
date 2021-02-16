@@ -5,17 +5,17 @@
     "main.js.map": "/cube-solver/static/js/main.6c02c091.chunk.js.map",
     "runtime-main.js": "/cube-solver/static/js/runtime-main.070f000d.js",
     "runtime-main.js.map": "/cube-solver/static/js/runtime-main.070f000d.js.map",
-    "static/js/2.40c7e8d2.chunk.js": "/cube-solver/static/js/2.40c7e8d2.chunk.js",
-    "static/js/2.40c7e8d2.chunk.js.map": "/cube-solver/static/js/2.40c7e8d2.chunk.js.map",
+    "static/js/2.4701a99a.chunk.js": "/cube-solver/static/js/2.4701a99a.chunk.js",
+    "static/js/2.4701a99a.chunk.js.map": "/cube-solver/static/js/2.4701a99a.chunk.js.map",
     "static/js/3.61e8efda.chunk.js": "/cube-solver/static/js/3.61e8efda.chunk.js",
     "static/js/3.61e8efda.chunk.js.map": "/cube-solver/static/js/3.61e8efda.chunk.js.map",
     "index.html": "/cube-solver/index.html",
     "static/css/main.f688bd2b.chunk.css.map": "/cube-solver/static/css/main.f688bd2b.chunk.css.map",
-    "static/js/2.40c7e8d2.chunk.js.LICENSE.txt": "/cube-solver/static/js/2.40c7e8d2.chunk.js.LICENSE.txt"
+    "static/js/2.4701a99a.chunk.js.LICENSE.txt": "/cube-solver/static/js/2.4701a99a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.070f000d.js",
-    "static/js/2.40c7e8d2.chunk.js",
+    "static/js/2.4701a99a.chunk.js",
     "static/css/main.f688bd2b.chunk.css",
     "static/js/main.6c02c091.chunk.js"
   ]
