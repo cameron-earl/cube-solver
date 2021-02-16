@@ -39,7 +39,7 @@ function CubeComponent() {
     return (
       <div className={`${styles[Color[sideColor]]} ${styles.sideContainer}`} key={`${sideColor}-sideContainer`}>
         <div key={`${Color[sideColor]}-side`} className={`${styles[Color[sideColor]]} ${styles.side}`}>
-          {side.map(createSquareEl(i))}
+          {side.map(createSquareEl(sideColor))}
         </div>
       </div>
     );
