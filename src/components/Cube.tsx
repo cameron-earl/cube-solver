@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { MouseEvent, useState } from 'react'
 import Cube, { Color, sideArr } from '../helpers/cube';
 import styles from './Cube.module.css';
 import cloneDeep from 'lodash.clonedeep';
@@ -12,9 +12,13 @@ function CubeComponent() {
 
   console.log(cubeMoves, cubeArr);
 
-  const handleClick = (c: Color, i: number) => () => {
-    if (i !== 4) return;
+  const handleClick = (c: Color, i: number, isRightClick = false) => (ev: MouseEvent<HTMLDivElement>) => {
     cubeObj.rotateSide(c);
+    if (isRightClick) {
+      cubeObj.rotateSide(c);
+      cubeObj.rotateSide(c);
+      ev.preventDefault();
+    }
     setCubeMoves(cubeObj.moveCount);
     setCubeArr(cloneDeep(cubeObj.arr));
   } 
@@ -24,6 +28,7 @@ function CubeComponent() {
       key={`${Color[sideColor]}-${i}-${c}-square`} 
       className={`${styles.square} ${styles[Color[c]]}`}
       onClick={handleClick(sideColor, i)}
+      onContextMenu={handleClick(sideColor, i, true)}
     >{i}</div>
   );
 
