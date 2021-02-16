@@ -1,3 +1,16 @@
+.cubeContainer {
+  display: flex;
+  background: #232323;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.viewContainer {
+  height: 248px;
+  width: 216px;
+  margin: 5px;
+}
+
 .side {
   background-color: black;
   max-width: 120px;
@@ -11,16 +24,9 @@
 
 .sideContainer {
   position: relative;
-  top: 130px;
+  top: 124px;
+  left: 108px;
   transform-origin: top left;
-}
-
-.sideContainer.white, .sideContainer.blue, .sideContainer.orange {
-  left: 120px;
-}
-
-.sideContainer.yellow, .sideContainer.red, .sideContainer.green {
-  left: 350px;
 }
 
 .sideContainer.white {
@@ -81,56 +87,16 @@
 }
 
 .white.square:hover {
-  box-shadow: 0 0 5px 5px rgba(0,230,255,.1) inset, 0 0 1px 1px rgba(255,255,255,.7) inset;
+  box-shadow: 0 0 5px 5px rgba(0, 230, 255, 0.1) inset, 0 0 1px 1px rgba(255, 255, 255, 0.7) inset;
 }
 
 .yellow.square:hover {
-  box-shadow: 0 0 5px 5px rgba(255,255,255,.5) inset, 0 0 1px 1px rgba(255,255,255,.7) inset;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.5) inset, 0 0 1px 1px rgba(255, 255, 255, 0.7) inset;
 }
 
-.red.square:hover, .orange.square:hover, .blue.square:hover, .green.square:hover {
-  box-shadow: 0 0 5px 5px rgba(255,255,255,.4) inset, 0 0 1px 1px rgba(255,255,255,.4) inset;
+.red.square:hover,
+.orange.square:hover,
+.blue.square:hover,
+.green.square:hover {
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.4) inset, 0 0 1px 1px rgba(255, 255, 255, 0.4) inset;
 }
-
-/* .white.side {
-  transform: rotate(-45deg) skew(15deg, 15deg);
-  position: absolute;
-  left: 50px;
-  top: 2px
-}
-
-.blue.side {
-  position: absolute;
-  top: 93px;
-  left: -3.5px;
-  transform: skew(0, 30deg) scaleX(0.89);
-}
-
-.orange.side {
-  position: absolute;
-  top: 93px;
-  left: 103.5px;
-  transform: skew(0, -30deg) scaleX(0.89);
-}
-
-.green.side {
-  position: absolute;
-  top: 30px;
-  left: 246.5px;
-  transform: skew(0, -30deg) scaleX(0.89);
-}
-
-.red.side {
-  position: absolute;
-  top: 30px;
-  left: 353px;
-  transform: skew(0, 30deg) scaleX(0.89);
-}
-
-.yellow.side {
-  transform: rotate(-45deg) skew(15deg, 15deg);
-  position: absolute;
-  left: 300px;
-  top: 121px;
-} */
-

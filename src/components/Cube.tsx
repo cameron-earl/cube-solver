@@ -1,53 +1,62 @@
-import React, { MouseEvent, useState } from 'react'
-import Cube, { Color, sideArr } from '../helpers/cube';
-import styles from './Cube.module.css';
-import cloneDeep from 'lodash.clonedeep';
+import React, { MouseEvent, useState } from 'react';
 
-const cubeObj = new Cube();
+import { Color, createSortedCubeArr, rotateSide, sideArr } from '../helpers/cube';
+import { addLog, Log } from '../helpers/log';
+import styles from './Cube.module.css';
+import LogDisplay from './LogDisplay';
 
 function CubeComponent() {
+  const [cubeArr, setCubeArr] = useState(createSortedCubeArr());
+  const [log, setLog] = useState([] as Log);
 
-  const [cubeArr, setCubeArr] = useState(cubeObj.arr);
-  const [cubeMoves, setCubeMoves] = useState(cubeObj.moveCount);
-
-  console.log(cubeMoves, cubeArr);
+  console.log(cubeArr);
 
   const handleClick = (c: Color, i: number, isRightClick = false) => (ev: MouseEvent<HTMLDivElement>) => {
-    cubeObj.rotateSide(c);
+    let newCubeArr;
     if (isRightClick) {
-      cubeObj.rotateSide(c);
-      cubeObj.rotateSide(c);
+      newCubeArr = rotateSide(cubeArr, c);
+      newCubeArr = rotateSide(newCubeArr, c);
+      newCubeArr = rotateSide(newCubeArr, c);
       ev.preventDefault();
+    } else {
+      newCubeArr = rotateSide(cubeArr, c);
     }
-    setCubeMoves(cubeObj.moveCount);
-    setCubeArr(cloneDeep(cubeObj.arr));
-  } 
+    setCubeArr(newCubeArr);
+    setLog(addLog(log, c, isRightClick ? 3 : 1));
+  };
 
   const createSquareEl = (sideColor: Color) => (c: Color, i: number) => (
-    <div 
-      key={`${Color[sideColor]}-${i}-${c}-square`} 
+    <div
+      key={`${Color[sideColor]}-${i}-${c}-square`}
       className={`${styles.square} ${styles[Color[c]]}`}
       onClick={handleClick(sideColor, i)}
       onContextMenu={handleClick(sideColor, i, true)}
-    >{i}</div>
+    ></div>
   );
 
-  const createSideEl = (side: sideArr, i: number) => (
-    <div className={`${styles[Color[i]]} ${styles.sideContainer}`} key={`${i}-sideContainer`}>
-      <div key={`${Color[i]}-side`} className={`${styles[Color[i]]} ${styles.side}`}>{side.map(createSquareEl(i))}</div>
-    </div>
-  );
+  const createSideEl = (aspect: number) => (side: sideArr, i: number) => {
+    const sideColor = aspect * 3 + i;
+    return (
+      <div className={`${styles[Color[sideColor]]} ${styles.sideContainer}`} key={`${sideColor}-sideContainer`}>
+        <div key={`${Color[sideColor]}-side`} className={`${styles[Color[sideColor]]} ${styles.side}`}>
+          {side.map(createSquareEl(i))}
+        </div>
+      </div>
+    );
+  };
 
-  const display = cubeArr.map(createSideEl);
+  const frontDisplay = cubeArr.slice(0, 3).map(createSideEl(0));
+  const rearDisplay = cubeArr.slice(3).map(createSideEl(1));
 
   return (
     <div>
-      <div>{cubeMoves}</div>
       <div className={styles.cubeContainer}>
-        {display}
+        <div className={styles.viewContainer}>{frontDisplay}</div>
+        <div className={styles.viewContainer}>{rearDisplay}</div>
       </div>
+      <LogDisplay log={log}></LogDisplay>
     </div>
-  )
+  );
 }
 
 export default CubeComponent;
