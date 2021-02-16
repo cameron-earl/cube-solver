@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cube-solver/static/css/main.f688bd2b.chunk.css",
-    "main.js": "/cube-solver/static/js/main.6c02c091.chunk.js",
-    "main.js.map": "/cube-solver/static/js/main.6c02c091.chunk.js.map",
+    "main.js": "/cube-solver/static/js/main.b31a08e7.chunk.js",
+    "main.js.map": "/cube-solver/static/js/main.b31a08e7.chunk.js.map",
     "runtime-main.js": "/cube-solver/static/js/runtime-main.070f000d.js",
     "runtime-main.js.map": "/cube-solver/static/js/runtime-main.070f000d.js.map",
     "static/js/2.4701a99a.chunk.js": "/cube-solver/static/js/2.4701a99a.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.070f000d.js",
     "static/js/2.4701a99a.chunk.js",
     "static/css/main.f688bd2b.chunk.css",
-    "static/js/main.6c02c091.chunk.js"
+    "static/js/main.b31a08e7.chunk.js"
   ]
 }
