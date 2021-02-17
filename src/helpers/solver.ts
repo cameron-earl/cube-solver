@@ -1,17 +1,18 @@
-import { Color, createSortedCubeArr, cubeArr, cubeArrToString, opposite, rotateSide } from './cube';
-import { isObjectEmpty } from './helpers';
+import { Color, createSortedCubeArr, cubeArr, cubeArrFromString, cubeArrToString, opposite, rotateSide } from './cube';
 import { Log } from './log';
-import { solutionMap } from './solutionMap';
+// TODO: perhaps revisit this for larger solutionMaps? Perhaps import permutations too to save on deserialization time?
+// import { solutionMap } from './solutionMap';
 
+const solutionMap: { [key: string]: Log } = {};
 type permutation = [cubeArr, Log];
 
 export const populateSolutionMap = (): void => {
-  if (!isObjectEmpty(solutionMap)) return;
+  // if (!isObjectEmpty(solutionMap)) return;
   console.time('populateSolutionMap');
   const sorted: cubeArr = createSortedCubeArr();
   solutionMap[cubeArrToString(sorted)] = [];
-  const permutations: permutation[] = [[sorted, []]];
-  for (let i = 0; permutations[i][1].length < 2 /* alt: i < permutations.length */; i++) {
+  const permutations: permutation[] = Object.entries(solutionMap).map((e) => [cubeArrFromString(e[0]), e[1]]);
+  for (let i = 0; permutations[i][1].length < 5 /* alt: i < permutations.length */; i++) {
     for (let j = 1; j < sorted.length; j++) {
       // Save a bit of time by preventing unnecessary work
       if (permutations[i][1].length > 0) {
@@ -35,5 +36,4 @@ export const populateSolutionMap = (): void => {
     }
   }
   console.timeEnd('populateSolutionMap');
-  console.log(JSON.stringify(solutionMap));
 };

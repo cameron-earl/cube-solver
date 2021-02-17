@@ -1,4 +1,5 @@
-import { arrValReplace, randElement, randInt, timeFn } from './helpers';
+import { arrValReplace, chunkSubstr, randElement, randInt, timeFn } from './helpers';
+import SillyGooseError from './SillyGooseError';
 
 export enum Color {
   white = 0,
@@ -90,3 +91,8 @@ export const rotateSide = (arr: cubeArr, color: Color = white, count = 1): cubeA
 };
 
 export const cubeArrToString = (arr: cubeArr): string => arr.reduce((str, side) => str + side.join(''), '');
+
+export const cubeArrFromString = (str: string): cubeArr => {
+  if (str.length !== 6 * 9) throw new SillyGooseError(`That's not a cubeArr, silly goose!`);
+  return chunkSubstr(str, 9).map((s) => s.split('').map(Number)) as cubeArr;
+};

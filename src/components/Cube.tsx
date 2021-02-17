@@ -2,16 +2,16 @@ import React, { MouseEvent, useState } from 'react';
 
 import { Color, createMixedUpCubeArr, rotateSide, sideArr } from '../helpers/cube';
 import { addLog, Log } from '../helpers/log';
-import { populateSolutionMap } from '../helpers/solver';
+// import { populateSolutionMap } from '../helpers/solver';
 import styles from './Cube.module.css';
 import LogDisplay from './LogDisplay';
 
-populateSolutionMap();
+// TODO: enable with solver
+// populateSolutionMap();
 
 const CubeComponent: React.FC = () => {
   const [cubeArr, setCubeArr] = useState(() => createMixedUpCubeArr());
   const [log, setLog] = useState([] as Log);
-  console.log('render!');
 
   const handleClick = (c: Color, i: number, isRightClick = false) => (ev: MouseEvent<HTMLDivElement>) => {
     const turns = isRightClick ? 3 : 1;
