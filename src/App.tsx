@@ -1,9 +1,8 @@
 import CubeComponent from './components/Cube';
+import React from 'react';
 
-function App() {
-  return (
-    <CubeComponent></CubeComponent>
-  );
-}
+const App: React.FC = () => {
+  return <CubeComponent></CubeComponent>;
+};
 
 export default App;

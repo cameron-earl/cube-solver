@@ -4,7 +4,7 @@ export type LogEntry = [Color, number];
 
 export type Log = LogEntry[];
 
-export const addLog = (log: Log, c: Color, turns: number) => {
+export const addLog = (log: Log, c: Color, turns: number): Log => {
   const newLog = [...log];
 
   const lastLog = log[log.length - 1];

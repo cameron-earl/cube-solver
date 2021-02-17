@@ -1,28 +1,24 @@
 import React, { MouseEvent, useState } from 'react';
 
-import { Color, createSortedCubeArr, rotateSide, sideArr } from '../helpers/cube';
+import { Color, createMixedUpCubeArr, rotateSide, sideArr } from '../helpers/cube';
 import { addLog, Log } from '../helpers/log';
+import { populateSolutionMap } from '../helpers/solver';
 import styles from './Cube.module.css';
 import LogDisplay from './LogDisplay';
 
-function CubeComponent() {
-  const [cubeArr, setCubeArr] = useState(createSortedCubeArr());
-  const [log, setLog] = useState([] as Log);
+populateSolutionMap();
 
-  console.log(cubeArr);
+const CubeComponent: React.FC = () => {
+  const [cubeArr, setCubeArr] = useState(() => createMixedUpCubeArr());
+  const [log, setLog] = useState([] as Log);
+  console.log('render!');
 
   const handleClick = (c: Color, i: number, isRightClick = false) => (ev: MouseEvent<HTMLDivElement>) => {
-    let newCubeArr;
-    if (isRightClick) {
-      newCubeArr = rotateSide(cubeArr, c);
-      newCubeArr = rotateSide(newCubeArr, c);
-      newCubeArr = rotateSide(newCubeArr, c);
-      ev.preventDefault();
-    } else {
-      newCubeArr = rotateSide(cubeArr, c);
-    }
+    const turns = isRightClick ? 3 : 1;
+    const newCubeArr = rotateSide(cubeArr, c, turns);
     setCubeArr(newCubeArr);
-    setLog(addLog(log, c, isRightClick ? 3 : 1));
+    setLog(addLog(log, c, turns));
+    ev.preventDefault();
   };
 
   const createSquareEl = (sideColor: Color) => (c: Color, i: number) => (
@@ -54,9 +50,9 @@ function CubeComponent() {
         <div className={styles.viewContainer}>{frontDisplay}</div>
         <div className={styles.viewContainer}>{rearDisplay}</div>
       </div>
-      <LogDisplay log={log}></LogDisplay>
+      <LogDisplay log={log} maxLogs={20}></LogDisplay>
     </div>
   );
-}
+};
 
 export default CubeComponent;
