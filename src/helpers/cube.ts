@@ -1,4 +1,4 @@
-import { arrValReplace, chunkSubstr, randElement, randInt, timeFn } from './helpers';
+import { arrValReplace, chunkSubstr, randElement, randInt } from './helpers';
 import SillyGooseError from './SillyGooseError';
 
 export enum Color {
